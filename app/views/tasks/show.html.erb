@@ -1,0 +1,13 @@
+<h1><%= @task.title %></h1>
+
+<% if (@task.completed === false) || (@task.completed === nil) %>
+  <p><%= @task.details %></p>
+  <br><%= check_box_tag :active, "t",checked = @task.completed %>
+  <h5>This task is not completed yet</h5>
+<% else %>
+  <p><%= @task.details %></p>
+  <br><%= check_box_tag :active, "t",checked = @task.completed %>
+  <h5>This task is completed</h5>
+<% end %>
+<hr>
+<%= link_to 'Back to list', tasks_path %>
