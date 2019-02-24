@@ -1,11 +1,15 @@
 <h1>My Tasks</h1>
 
 <% @tasks.each do |task| %>
-  <br><%= check_box_tag :active, "t",checked = task.completed %>
-  <%= link_to task.title, task_path(task)%>
-
-<%= link_to "Delete", task_path(task),
+  <% if (task.completed === false) || (task.completed === nil) %>
+    <%= image_tag("empty.png", :alt => "not completed") %>
+    <%= link_to task.title, task_path(task)%>
+  <% else %>
+    <%= image_tag("check.png", :alt => "completed") %>
+    <%= link_to task.title, task_path(task)%>
+  <% end %>
+  <%= link_to "Delete", task_path(task),
       method: :delete,
-      data: { confirm: "Are you sure?" } %>
+      data: { confirm: "Are you sure?" } %><br>
 <% end %>
-
+<br><%= link_to "Add a new task", new_task_path %>

@@ -1,2 +1,15 @@
-<%= render 'form', restaurant: @restaurant %>
-<%= link_to 'Back to all tasks', tasks_path %>
+<fieldset>
+  <!-- <%= render 'form', restaurant: @restaurant %> -->
+  <div class="item">
+    <%= form_for @task do |f| %>
+      <%= f.label :title, "Title" %>
+      <%= f.text_field :title %>
+      <%= f.label :details, "Details" %>
+      <%= f.text_field :details %>
+      <%= check_box_tag :active, "t",checked = @task.completed %>
+      <label for="edit-complete">Completed</label>
+      <%= f.submit %>
+    <% end %>
+  </div>
+<br><%= link_to 'Back to all tasks', tasks_path %>
+</fieldset>
